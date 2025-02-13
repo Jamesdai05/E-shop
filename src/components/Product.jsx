@@ -14,10 +14,10 @@ const Product = ({ name, rating, numReviews, price, image, _id }) => {
           <Rating
             value={rating}
             text={`${numReviews} Reviews`}
-            className="my-3"
+            className="mb-3"
           />
         </Card.Text>
-        <Card.Text as="h4">Price:${price}</Card.Text>
+        <Card.Text as="h4">${price}</Card.Text>
       </Card.Body>
     </Card>
   );

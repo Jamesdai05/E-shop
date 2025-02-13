@@ -14,7 +14,7 @@
 
 /* to set the card to be the same size */
 .title {
-  height: 2.2rem;
+  height: 2rem;
   overflow: hidden;
   text-overflow: ellipsis;
   text-wrap: nowrap;

@@ -2,8 +2,6 @@ import { Col,Row } from "react-bootstrap";
 import Product from "./Product";
 
 
-
-
 const Productslist = ({products}) => {
   return (
     <Row>

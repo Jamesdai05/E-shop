@@ -2,9 +2,7 @@ import { Container } from "react-bootstrap";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Product from "./components/Product";
-import Productlist from "./components/Productslist";
-import products from "./products";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
@@ -13,7 +11,7 @@ function App() {
       {/* <Product/> */}
       <main className="py-3">
         <Container>
-          <Productlist products={products} />
+          <Outlet />
         </Container>
       </main>
       <Footer />
