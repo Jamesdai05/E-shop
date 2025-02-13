@@ -1,17 +1,32 @@
 import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import Rating from "../components/Rating";
 import { Link, useParams } from "react-router-dom";
-import products from "../products";
+// import products from "../products";
+import axios from "axios"
+import { useEffect, useState } from "react";
 
 
 
 const ProductDetails = () => {
-  //   const [product,setProduct]=useState({})
+    const [product,setProduct]=useState({})
 
   const { id: productId } = useParams();
+  const url=`/api/products/${productId}`
 
-  const product = products.find((product) => product._id === productId);
-  console.log(product);
+  useEffect(()=>{
+    const productFetch=async()=>{
+      const {data}=await axios.get(url)
+      console.log(data[0])
+      setProduct(data[0])
+    }
+    productFetch()
+  },[productId])
+
+  // const product = products.find((product) => product._id === productId);
+  // console.log(product);
+
+
+
   return (
     <>
       <Link className="btn btn-secondary my-3" to="/">
