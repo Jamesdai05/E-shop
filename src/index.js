@@ -5,13 +5,14 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import Home from './Pages/Home';
+import ProductDetails from './Pages/Productdetails';
 
 
 const router=createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index={true} path='/' element={<Home />}/>
-      <Route path='/:id' element={<Home />}/>
+      <Route path='/product/:id' element={<ProductDetails />}/>
     </Route>
   )
 )

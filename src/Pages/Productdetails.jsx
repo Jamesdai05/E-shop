@@ -1,6 +1,8 @@
 import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import Rating from "../components/Rating";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import products from "../products";
+
 
 
 const ProductDetails = () => {
