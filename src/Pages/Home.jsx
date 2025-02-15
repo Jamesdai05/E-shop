@@ -4,20 +4,19 @@ import Productslist from "../components/Productslist";
 import { useEffect, useState } from "react";
 // import products from "../products";
 
-
 const Home = () => {
-  const [products,setProducts]=useState([])
+  const [products, setProducts] = useState([]);
 
-  const productsUrl="/api/products";
-  useEffect(()=>{
-    const dataFetching=async()=>{
+  const productsUrl = "/api/products";
+  useEffect(() => {
+    const dataFetching = async () => {
       // const {data} = await axios.get(productsUrl);
-      const {data}=await axios.get(productsUrl)
-      // console.log(data.products)
-      setProducts(data.products)
-    }
-    dataFetching()
-  },[])
+      const { data } = await axios.get(productsUrl);
+      console.log(data);
+      setProducts(data);
+    };
+    dataFetching();
+  }, []);
 
   const style = {
     display: "flex",

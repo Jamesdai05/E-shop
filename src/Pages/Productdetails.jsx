@@ -16,8 +16,8 @@ const ProductDetails = () => {
   useEffect(()=>{
     const productFetch=async()=>{
       const {data}=await axios.get(url)
-      console.log(data[0])
-      setProduct(data[0])
+      console.log(data)
+      setProduct(data)
     }
     productFetch()
   },[productId])
