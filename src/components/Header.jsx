@@ -17,7 +17,6 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse
           id="basic-navbar-nav"
-          className="d-flex justify-content-end"
         >
           {/* <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
