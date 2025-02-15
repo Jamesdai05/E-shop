@@ -16,7 +16,7 @@ const ProductDetails = () => {
   useEffect(()=>{
     const productFetch=async()=>{
       const {data}=await axios.get(url)
-      console.log(data)
+      // console.log(data)
       setProduct(data)
     }
     productFetch()
