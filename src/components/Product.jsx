@@ -14,7 +14,7 @@ const Product = ({ name, rating, numReviews, price, image, _id }) => {
         />
       </Link>
       <Card.Body>
-        <Link to={`/product/${_id}`}>
+        <Link to={`/product/${_id}`} style={{textDecoration:"none"}}>
           <Card.Title as="div" className="title">
             <b>{name}</b>
           </Card.Title>
