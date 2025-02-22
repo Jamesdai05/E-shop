@@ -7,10 +7,10 @@ import { useEffect, useState } from "react";
 const Home = () => {
   const [products, setProducts] = useState([]);
 
+  // fetch data from backend
   const productsUrl = "/api/products";
   useEffect(() => {
     const dataFetching = async () => {
-      // const {data} = await axios.get(productsUrl);
       const { data } = await axios.get(productsUrl);
       // console.log(data);
       setProducts(data);
@@ -23,8 +23,6 @@ const Home = () => {
     justifyContent: "center",
     alignItems: "center",
   };
-
-  // fetch data from backend
 
   return (
     <>
