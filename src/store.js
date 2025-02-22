@@ -3,9 +3,11 @@ import { apiSlice } from "./Slices/apiSlice.js";
 
 const store=configureStore({
   reducer:{
-    [apiSlice.reducerPath]:apiSlice.reducer,
+    [apiSlice.reducerPath]: apiSlice.reducer,
   },
-  middleWare:(getDefaultMiddleWare)=>getDefaultMiddleWare().concat(apiSlice.middleware),
+  // middleWare:(getDefaultMiddleware)=>getDefaultMiddleware().concat(apiSlice.middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiSlice.middleware),
   devTools:true,
 })
 

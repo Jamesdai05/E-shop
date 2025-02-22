@@ -1,11 +1,13 @@
 // import { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import Productslist from "../components/Productslist";
-import { useEffect, useState } from "react";
+import { useGetProductsQuery } from "../Slices/productSlice.js";
+// import { useEffect, useState } from "react";
 // import products from "../products";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
+  const {data:products,isLoading,error} = useGetProductsQuery()
+  /*const [products, setProducts] = useState([]);
 
   // fetch data from backend
   const productsUrl = "/api/products";
@@ -16,7 +18,7 @@ const Home = () => {
       setProducts(data);
     };
     dataFetching();
-  }, []);
+  }, []); */
 
   const style = {
     display: "flex",
@@ -26,9 +28,17 @@ const Home = () => {
 
   return (
     <>
-      <h1>Latest Products</h1>
-      <Productslist products={products} style={style} />
+      {isLoading ? (<h2>Loading...</h2>) : error ? (<div>{error?.data?.message || error?.error}</div>) :(
+        <>
+          <h1>Latest Products</h1>
+          <Productslist products={products} style={style} />
+        </>
+      )}
     </>
+    // <>
+    //   <h1>Latest Products</h1>
+    //   <Productslist products={products} style={style} />
+    // </>
   );
 };
 
