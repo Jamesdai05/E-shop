@@ -1,28 +1,32 @@
 import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import Rating from "../components/Rating";
 import { Link, useParams } from "react-router-dom";
+import { useGetProductDetailsQuery } from "../Slices/productSlice.js";
 // import products from "../products";
-import axios from "axios"
-import { useEffect, useState } from "react";
+// import axios from "axios"
+// import { useEffect, useState } from "react";
+
 
 
 
 const ProductDetails = () => {
-    const [product,setProduct]=useState({})
+    // const [product,setProduct]=useState({})
 
   const { id: productId } = useParams();
-  const url=`/api/products/${productId}`
+  // const url=`/api/products/${productId}`
 
-  useEffect(()=>{
-    const productFetch=async()=>{
-      const {data}=await axios.get(url)
-      // console.log(data)
-      setProduct(data)
-    }
-    productFetch()
-  },[productId])
+  // useEffect(()=>{
+  //   const productFetch=async()=>{
+  //     const {data}=await axios.get(url)
+  //     // console.log(data)
+  //     setProduct(data)
+  //   }
+  //   productFetch()
+  // },[productId])
 
-  
+  const {data:product,isLoading,error} = useGetProductDetailsQuery(productId)
+
+
 
 
 
@@ -32,6 +36,7 @@ const ProductDetails = () => {
         Go Back
       </Link>
 
+      
       <Row>
         <Col md={5}>
           <Image src={product.image} alt={product.name} fluid />
