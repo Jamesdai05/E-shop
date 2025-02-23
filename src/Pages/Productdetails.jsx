@@ -2,6 +2,8 @@ import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import Rating from "../components/Rating";
 import { Link, useParams } from "react-router-dom";
 import { useGetProductDetailsQuery } from "../Slices/productSlice.js";
+import Loader from "../components/Loader.jsx";
+import Message from "../components/Message.jsx";
 // import products from "../products";
 // import axios from "axios"
 // import { useEffect, useState } from "react";
@@ -37,9 +39,9 @@ const ProductDetails = () => {
       </Link>
 
       {isLoading ? (
-        <h2>Loading...</h2>
+        <Loader />
       ) : error ? (
-        <div>{error?.data?.message || error?.error}</div>
+        <Message variant="danger">{error?.data?.message || error?.error}</Message>
       ) : (
         <Row>
           <Col md={5}>

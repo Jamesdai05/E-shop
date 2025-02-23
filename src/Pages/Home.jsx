@@ -1,7 +1,10 @@
 // import { useEffect, useState } from "react";
 // import axios from "axios";
+import Loader from "../components/Loader.jsx";
+import Message from "../components/Message.jsx";
 import Productslist from "../components/Productslist";
 import { useGetProductsQuery } from "../Slices/productSlice.js";
+
 // import { useEffect, useState } from "react";
 // import products from "../products";
 
@@ -28,7 +31,7 @@ const Home = () => {
 
   return (
     <>
-      {isLoading ? (<h2>Loading...</h2>) : error ? (<div>{error?.data?.message || error?.error}</div>) :(
+      {isLoading ? (<Loader />) : error ? (<Message variant="danger">{error?.data?.message || error?.error}</Message>) :(
         <>
           <h1>Latest Products</h1>
           <Productslist products={products} style={style} />
