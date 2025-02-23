@@ -11,11 +11,11 @@ export const productsApiSlice=apiSlice.injectEndpoints({
       keepUnusedDataFor:5,
       providesTags: ['Product'],
     }),
-    getProductDetails:builder.query({
-      query:(productId)=>({
+    getProductDetails: builder.query({
+      query: (productId) => ({
         url: `${PRODUCTS_URL}/${productId}`,
       }),
-      keepUnusedDataFor:5,
+      keepUnusedDataFor: 5, // Cache data for 5 seconds
     })
   }),
 });
