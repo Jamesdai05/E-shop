@@ -18,7 +18,7 @@ const cartSlice=createSlice({
         const existItem=state.cartItems.find(e=>e._id===item._id)
         // to check if the item exist and update the quantity.
         if(existItem){
-          state.cartItems=state.cartItems.map(e=>e.id===existItem._id ? item : e)
+          state.cartItems=state.cartItems.map(e=>e._id===existItem._id ? item : e)
         }else{
           state.cartItems=[...state.cartItems,item]
         }
