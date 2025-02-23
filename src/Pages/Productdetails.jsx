@@ -22,8 +22,7 @@ const ProductDetails = () => {
     productFetch()
   },[productId])
 
-  // const product = products.find((product) => product._id === productId);
-  // console.log(product);
+  
 
 
 
