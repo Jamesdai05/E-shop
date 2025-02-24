@@ -22,6 +22,10 @@ const CartPage = () => {
     dispatch(removeFromCart(id));
   };
 
+  const checkOutHandler=()=>{
+    console.log("Hi")
+  }
+
   return (
     <Row>
       <Col md={8}>
@@ -33,7 +37,7 @@ const CartPage = () => {
         ) : (
           <ListGroup variant="flush">
             {cartItems.map((item) => (
-              <ListGroup.Item>
+              <ListGroup.Item key={item._id}>
                 <Row>
                   <Col md={2}>
                     <Image src={item.image} fluid rounded />
@@ -88,6 +92,7 @@ const CartPage = () => {
                 variant="primary"
                 className="btn-block"
                 disabled={cartItems.length === 0}
+                onClick={checkOutHandler}
               >
                 Proceed To Checkout
               </Button>
