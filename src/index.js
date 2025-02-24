@@ -8,12 +8,14 @@ import Home from './Pages/Home';
 import ProductDetails from './Pages/Productdetails';
 import { Provider } from 'react-redux';
 import store from './store.js';
+import CartPage from './Pages/CartPage.jsx';
 
 const router=createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index={true} path='/' element={<Home />}/>
       <Route path='/product/:id' element={<ProductDetails />}/>
+      <Route path='/cart' element={<CartPage />}/>
     </Route>
   )
 )
