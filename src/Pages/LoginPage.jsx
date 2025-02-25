@@ -22,7 +22,7 @@ const LoginPage = () => {
 
       <Form onSubmit={handleSubmit}>
         <Form.Group>
-          <Form.Label controlId="email" className="my-3">
+          <Form.Label controlid="email" className="my-2">
             Email Address:
           </Form.Label>
           <Form.Control
@@ -33,7 +33,7 @@ const LoginPage = () => {
           ></Form.Control>
         </Form.Group>
         <Form.Group>
-          <Form.Label controlId="password" className="my-3">
+          <Form.Label controlid="password" className="my-2">
             Password:
           </Form.Label>
           <Form.Control
@@ -43,12 +43,12 @@ const LoginPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Button type="submit" variant="primary" className="btn btn-lg mt-2">Log In</Button>
+        <Button type="submit" variant="primary" className="btn btn-lg my-4">Log In</Button>
       </Form>
 
       <Row className="my-3">
         <Col>
-          New user ? <Link to="/register">Sign Up</Link>
+          New user ? <Link className="btn btn-secondary" to="/register">Sign Up</Link>
         </Col>
       </Row>
     </FormContainer>
