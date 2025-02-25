@@ -30,10 +30,20 @@ const LoginPage = () => {
     }
   }, [userInfo, redirect, navigate]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+    try {
+      const res= await login({email,password}).unwrap();
+      dispatch(setCredentials({...res}));
+      navigate(redirect);
+    } catch (err) {
+      toast.error(err?.data?.message || err?.error)
+    }
+
     console.log(email, password);
   };
+
+  console.log(localStorage.getItem("userInfo"))
 
   return (
     <FormContainer>
@@ -58,15 +68,16 @@ const LoginPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Button type="submit" variant="primary" className="btn btn-lg my-4">
+        <Button type="submit" variant="primary" className="btn btn-lg my-4" disabled={isLoading}>
           Log In
         </Button>
+        {isLoading && <Loader />}
       </Form>
 
       <Row className="py-3">
         <Col>
           New user ?{" "}
-          <Link className="fw-bold" to="/register">
+          <Link className="fw-bold" to={redirect ? `/register?redirect=${redirect}` : "/register"}>
             Sign Up
           </Link>
         </Col>
