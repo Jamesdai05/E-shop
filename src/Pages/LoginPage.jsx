@@ -12,7 +12,7 @@ const LoginPage = () => {
 
   const handleSubmit=(e)=>{
     e.preventDefault();
-    console.log("submitted")
+    console.log(email, password)
   }
 
 

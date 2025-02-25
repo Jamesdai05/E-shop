@@ -4,7 +4,7 @@ import { updateCart } from "../utils/cartUtils.js";
 // set the initialState to  the browser memory or to be an empty array
 const initialState=localStorage.getItem("cart") ? JSON.parse(localStorage.getItem('cart')) : {cartItems:[]}
 
-console.log(initialState);
+// console.log(initialState);
 
 const cartSlice=createSlice({
     name:"cart",
