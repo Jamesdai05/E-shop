@@ -1,7 +1,12 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
 import FormContainer from "../components/FormContainer.jsx";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../components/Loader.jsx";
+import { setCredentials } from "../Slices/authSlice.js";
+import { useLoginMutation } from "../Slices/userSlice.js";
+import { toast } from "react-toastify";
 
 
 
@@ -46,9 +51,9 @@ const LoginPage = () => {
         <Button type="submit" variant="primary" className="btn btn-lg my-4">Log In</Button>
       </Form>
 
-      <Row className="my-3">
+      <Row className="py-3">
         <Col>
-          New user ? <Link className="btn btn-secondary" to="/register">Sign Up</Link>
+          New user ? <Link className="fw-bold" to="/register">Sign Up</Link>
         </Col>
       </Row>
     </FormContainer>
