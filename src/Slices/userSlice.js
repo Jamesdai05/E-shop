@@ -2,20 +2,23 @@ import { USERS_URL } from "../constants.js";
 import { apiSlice } from "./apiSlice.js";
 
 
-export const productsApiSlice=apiSlice.injectEndpoints({
+export const usersApiSlice=apiSlice.injectEndpoints({
   endpoints:(builder)=>({
-    getUsers:builder.query({
-      query:()=>({
-        url:USERS_URL,
+    login:builder.mutation({
+      query:(data)=>({
+        url:USERS_URL/login,
+        method:"POST",
+        body:data,
       }),
-      keepUnusedDataFor:1,
       providesTags: ['User'],
     }),
-    getProductDetails: builder.query({
-      query: (productId) => ({
-        url: `${PRODUCTS_URL}/${productId}`,
-      }),
-      keepUnusedDataFor: 1, // Cache data for 5 seconds
-    })
+    // getProductDetails: builder.query({
+    //   query: (productId) => ({
+    //     url: `${PRODUCTS_URL}/${productId}`,
+    //   }),
+    //   keepUnusedDataFor: 1, // Cache data for 5 seconds
+    // })
   }),
 });
+
+export const {useLoginMutation} = usersApiSlice;
