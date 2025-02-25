@@ -12,12 +12,7 @@ export const usersApiSlice=apiSlice.injectEndpoints({
       }),
       providesTags: ['User'],
     }),
-    // getProductDetails: builder.query({
-    //   query: (productId) => ({
-    //     url: `${PRODUCTS_URL}/${productId}`,
-    //   }),
-    //   keepUnusedDataFor: 1, // Cache data for 5 seconds
-    // })
+
   }),
 });
 
