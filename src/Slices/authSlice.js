@@ -1,6 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const userInfoFromStorage = localStorage.getItem("userInfo");
+// const userInfoFromStorage = localStorage.getItem("userInfo");
+
+// Retrieve userInfo from localStorage
+let userInfoFromStorage = null;
+try {
+  userInfoFromStorage = localStorage.getItem("userInfo");
+} catch (error) {
+  console.error("Failed to access localStorage:", error);
+}
 
 
 const initialState={
@@ -13,11 +21,10 @@ const authSlice=createSlice({
   reducers:{
     setCredentials:(state,action)=>{
       state.userInfo=action.payload;
-      localStorage.getItem("userInfo",JSON.stringify(localStorage.getItem(action.payload)))
+      localStorage.setItem("userInfo",JSON.stringify(action.payload))
     }
   }
 })
 
 export const {setCredentials}=authSlice.actions;
 export default authSlice.reducer;
- 

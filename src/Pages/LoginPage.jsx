@@ -16,7 +16,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const [login, { isLoading }] = useLoginMutation();
-
+  //get the user from the state
   const { userInfo } = useSelector((state) => state.auth);
 
   const { search } = useLocation();
@@ -30,8 +30,20 @@ const LoginPage = () => {
     }
   }, [userInfo, redirect, navigate]);
 
+  // add the email focus when page is loaded
+  useEffect(() => {
+    document.getElementById("email").focus();
+  }, []);
+
   const handleSubmit = async(e) => {
     e.preventDefault();
+
+    // validate the form
+    if (!email || !password) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+
     try {
       const res= await login({email,password}).unwrap();
       dispatch(setCredentials({...res}));
@@ -40,10 +52,10 @@ const LoginPage = () => {
       toast.error(err?.data?.message || err?.error)
     }
 
-    console.log(email, password);
+    // console.log(email, password);
   };
 
-  console.log(localStorage.getItem("userInfo"))
+  // console.log(localStorage.getItem("userInfo"))
 
   return (
     <FormContainer>
