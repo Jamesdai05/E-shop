@@ -14,6 +14,8 @@ import RegisterPage from './Pages/RegisterPage.jsx';
 import Profile from './Pages/Profile.jsx';
 import ShippingPage from './Pages/ShippingPage.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
+import PaymentPage from './Pages/PaymentPage.jsx';
+import PlaceOrder from './Pages/PlaceOrder.jsx';
 
 
 
@@ -31,6 +33,8 @@ const router=createBrowserRouter(
 
       <Route path="" element={<PrivateRoute/>}>
         <Route path='/shipping' element={<ShippingPage />}/>
+        <Route path='/payment' element={<PaymentPage />}/>
+        <Route path='/placeorder' element={<PlaceOrder />}/>
       </Route>
     </Route>
   )
