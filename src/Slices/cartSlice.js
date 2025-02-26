@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { updateCart } from "../utils/cartUtils.js";
 
 // set the initialState to  the browser memory or to be an empty array
-const initialState=localStorage.getItem("cart") ? JSON.parse(localStorage.getItem('cart')) : {cartItems:[]}
+const initialState=localStorage.getItem("cart") ? JSON.parse(localStorage.getItem('cart')) : {cartItems:[],shippingAddress:{},paymentMethod:"Paypal"}
 
 // console.log(initialState);
 
@@ -26,11 +26,15 @@ const cartSlice=createSlice({
       removeFromCart:(state,action)=>{
         state.cartItems=state.cartItems.filter(e=>e._id !==action.payload)
         return updateCart(state)
+      },
+      saveShippingAddress:(state,action)=>{
+        state.shippingAddress=action.payload;
+        return updateCart(state)
       }
     }
 })
 
 // export the actions
-export const {addToCart,removeFromCart} = cartSlice.actions;
+export const {addToCart,removeFromCart,saveShippingAddress} = cartSlice.actions;
 
 export default cartSlice.reducer
