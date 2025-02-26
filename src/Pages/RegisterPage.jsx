@@ -114,19 +114,19 @@ const RegisterPage = () => {
           className="btn btn-lg my-4"
           disabled={isLoading}
         >
-          Log In
+          Register
         </Button>
         {isLoading && <Loader />}
       </Form>
 
       <Row className="py-3">
         <Col>
-          New user ?{" "}
+          Already have an account ?{" "}
           <Link
             className="fw-bold"
-            to={redirect ? `/register?redirect=${redirect}` : "/register"}
+            to={redirect ? `/login?redirect=${redirect}` : "/login"}
           >
-            Sign Up
+            Log in
           </Link>
         </Col>
       </Row>
