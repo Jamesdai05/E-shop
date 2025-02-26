@@ -12,7 +12,7 @@ const ShippingPage = () => {
 
   const [address, setAddress] = useState(shippingAddress?.address || "");
   const [city, setCity] = useState(shippingAddress?.city || "");
-  const [postCode, setPostCode] = useState(shippingAddress?.postCode || "");
+  const [postalCode, setPostalCode] = useState(shippingAddress?.postalCode || "");
   const [country, setCountry] = useState(shippingAddress?.country || "");
 
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const ShippingPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress({ address, city, postCode, country }));
+    dispatch(saveShippingAddress({ address, city, postalCode, country }));
     navigate("/payment");
   };
 
@@ -52,8 +52,8 @@ const ShippingPage = () => {
           <Form.Control
             type="text"
             placeholder="Enter the postCode"
-            value={postCode}
-            onChange={(e) => setPostCode(e.target.value)}
+            value={postalCode}
+            onChange={(e) => setPostalCode(e.target.value)}
           ></Form.Control>
           <Form.Label>Country</Form.Label>
           <Form.Control
