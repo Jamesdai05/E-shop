@@ -6,7 +6,7 @@ export const ordersApiSlice=apiSlice.injectEndpoints({
   endpoints:(builder)=>({
     getOrders:builder.query({
       query:()=>({
-        url:PRODUCTS_URL,
+        url:ORDERS_URL,
       }),
       keepUnusedDataFor:1,
       providesTags: ['Product'],
@@ -22,4 +22,4 @@ export const ordersApiSlice=apiSlice.injectEndpoints({
   }),
 });
 
-export const {useCreateOrdersMutation}=ordersApiSlice;
+export const {useCreateOrdersMutation,useGetOrdersQuery}=ordersApiSlice;
