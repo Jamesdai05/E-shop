@@ -27,7 +27,7 @@ const PaymentPage = () => {
   const handleSummit=(e)=>{
     e.preventDefault()
     // console.log("payment done")
-    dispatch(savePaymentMethod({paymentMethod}))
+    dispatch(savePaymentMethod(paymentMethod))
     navigate("/placeorder")
   }
 
@@ -41,24 +41,22 @@ const PaymentPage = () => {
           <Form.Label as="legend">
             <Col>
               <Form.Check
-               type="radio"
-               className="my-2"
-               label="Credit Card or PayPal"
-               name="paymentMethod"
-               value="PayPal"
-               checked
-               onChange={(e)=>setPaymentMethod(e.target.value)}
-               >
-
-              </Form.Check>
+                type="radio"
+                className="my-2"
+                label="Credit Card or PayPal"
+                name="paymentMethod"
+                value="PayPal"
+                checked
+                onChange={(e) => setPaymentMethod(e.target.value)}
+              ></Form.Check>
             </Col>
           </Form.Label>
         </Form.Group>
-        <Button variant="primary" type="submit" className="btn btn-lg my-4">
+        <Button variant="primary" className="btn btn-lg my-4" type="submit">
           Continue
         </Button>
       </Form>
     </FormContainer>
-  )
+  );
 }
 export default PaymentPage
