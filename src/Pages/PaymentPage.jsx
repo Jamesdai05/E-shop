@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Col, Form } from "react-bootstrap";
 import FormContainer from '../components/FormContainer';
 import CheckoutComponent from "../components/CheckoutComponent.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { savePaymentMethod } from "../Slices/cartSlice.js";
 import { useNavigate } from "react-router-dom";
-
 
 
 
@@ -16,10 +15,19 @@ const PaymentPage = () => {
   const navigate=useNavigate()
 
   const cart=useSelector(state=>state.cart)
+  const { shippingAddress } = cart;
+
+  // check the address exists or not
+  useEffect(()=>{
+    if(!shippingAddress){
+      navigate("/shipping")
+
+  }},[shippingAddress,navigate])
 
   const handleSummit=(e)=>{
     e.preventDefault()
-    console.log("payment done")
+    // console.log("payment done")
+    dispatch(savePaymentMethod({paymentMethod}))
     navigate("/placeorder")
   }
 
