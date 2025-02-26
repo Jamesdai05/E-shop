@@ -15,6 +15,9 @@ const PlaceOrder = () => {
 
   const cart=useSelector(state=>state.cart)
 
+  const [createOrder, {isLoading,error}]=useCreateOrdersMutation()
+
+
   // if one of this change,
   useEffect(()=>{
     if(!cart.shippingAddress.address){
@@ -24,6 +27,9 @@ const PlaceOrder = () => {
     }
   },[cart.paymentMethod,cart.shippingAddress.address,navigate])
 
+  const handleOrderSubmit=()=>{
+    console.log("submit")
+  }
 
 
   return (
@@ -37,7 +43,8 @@ const PlaceOrder = () => {
             </ListGroup.Item>
             <ListGroup.Item>
               <p>
-                <strong>Address:</strong><br/>
+                <strong>Address:</strong>
+                <br />
                 <i>
                   {cart.shippingAddress.address},{cart.shippingAddress.city}
                 </i>
@@ -48,9 +55,92 @@ const PlaceOrder = () => {
                 </i>
               </p>
             </ListGroup.Item>
+            <ListGroup.Item>
+              <p>
+                <strong>PaymentMethod:</strong>
+                {cart.paymentMethod}
+              </p>
+            </ListGroup.Item>
+            <ListGroup.Item>
+                <strong>CartItems:</strong>
+                {cart.cartItems.length === 0 ? (
+                  <Message>Your cart is empty.</Message>
+                ) : (
+                  <ListGroup>
+                    {cart.cartItems.map((item, index) => (
+                      <ListGroup.Item key={index}>
+                        <Row>
+                          <Col md={1}>
+                            <Image
+                              src={item.image}
+                              alt={item.name}
+                              fluid
+                              rounded
+                            />
+                          </Col>
+                          <Col>
+                            <Link
+                              to={`/product/${item._id}`}
+                              className="text-decoration-none hover:text-decoration-underline"
+                            >
+                              {item.name}
+                            </Link>
+                          </Col>
+                          <Col md={4}>
+                            {item.qty}X${item.price}=${item.qty * item.price}
+                          </Col>
+                        </Row>
+                      </ListGroup.Item>
+                    ))}
+                  </ListGroup>
+                )}
+            </ListGroup.Item>
           </ListGroup>
         </Col>
-        <Col md={4}>Column</Col>
+        <Col md={4}>
+          <ListGroup variant="flush">
+            <ListGroup.Item>
+              <h2>Order Summary:</h2>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Row>
+                <Col>ItemsPrice:</Col>
+                <Col>${cart.itemsPrice}</Col>
+              </Row>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Row>
+                <Col>TaxPrice:</Col>
+                <Col>${cart.taxPrice}</Col>
+              </Row>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Row>
+                <Col>ShippingPrice:</Col>
+                <Col>${cart.shippingPrice}</Col>
+              </Row>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Row>
+                <Col>TotalPrice:</Col>
+                <Col>${cart.totalPrice}</Col>
+              </Row>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              {error && <Message variant="danger">{error}</Message>}
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Button
+                type="submit"
+                variant="primary"
+                disabled={cart.cartItems.length === 0}
+                onClick={handleOrderSubmit}
+              >
+                Place Order
+              </Button>
+            </ListGroup.Item>
+          </ListGroup>
+        </Col>
       </Row>
     </>
   );
