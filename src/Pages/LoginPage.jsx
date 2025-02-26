@@ -63,7 +63,7 @@ const LoginPage = () => {
 
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="email" className="my-2">
-          <Form.Label>Email:</Form.Label>
+          <Form.Label>Email</Form.Label>
           <Form.Control
             type="email"
             placeholder="enter your email"
@@ -72,7 +72,7 @@ const LoginPage = () => {
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId="password" className="my-2">
-          <Form.Label>Password:</Form.Label>
+          <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
             placeholder="enter your password"

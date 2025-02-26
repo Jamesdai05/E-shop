@@ -73,7 +73,7 @@ const RegisterPage = () => {
 
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="email" className="my-2">
-          <Form.Label>Email:</Form.Label>
+          <Form.Label>Email</Form.Label>
           <Form.Control
             type="email"
             placeholder="enter your email"
@@ -82,7 +82,7 @@ const RegisterPage = () => {
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId="name" className="my-2">
-          <Form.Label>Name:</Form.Label>
+          <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
             placeholder="enter your name"
@@ -91,7 +91,7 @@ const RegisterPage = () => {
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId="password" className="my-2">
-          <Form.Label>Password:</Form.Label>
+          <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
             placeholder="enter your password"
@@ -100,7 +100,7 @@ const RegisterPage = () => {
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId="password" className="my-2">
-          <Form.Label>Password:</Form.Label>
+          <Form.Label>Confirm Password</Form.Label>
           <Form.Control
             type="password"
             placeholder="reenter your password"
