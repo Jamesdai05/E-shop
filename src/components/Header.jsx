@@ -3,8 +3,11 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useLogoutMutation } from "../Slices/userSlice.js";
+import {logout} from "../Slices/authSlice.js"
+
 
 
 const Header = () => {
@@ -14,8 +17,24 @@ const Header = () => {
   // console.log(cartItems)
   const { userInfo } = useSelector((state) => state.auth);
 
-  const handleLoggOut=()=>{
-    console.log(userInfo)
+  const dispatch=useDispatch();
+  const navigate=useNavigate();
+
+
+  // use logout mutation hook
+  const [logoutApiCall]=useLogoutMutation();
+
+
+  const handleLogOut=async()=>{
+    try {
+      // promise unwrap
+      await logoutApiCall().unwrap();
+      dispatch(logout());
+      // direct to login page
+      navigate("/login")
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const fsStyle={color:"#fff"}
@@ -45,7 +64,7 @@ const Header = () => {
                 <NavDropdown.Item as={Link} to="/profile">
                   Profile
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} onClick={handleLoggOut}>
+                <NavDropdown.Item as={Link} onClick={handleLogOut}>
                   Log Out
                 </NavDropdown.Item>
               </NavDropdown>
