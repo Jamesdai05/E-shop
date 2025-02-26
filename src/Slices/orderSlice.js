@@ -22,4 +22,4 @@ export const ordersApiSlice=apiSlice.injectEndpoints({
   }),
 });
 
-export const {useCreateOrdersQuery,useGetProductDetailsQuery}=ordersApiSlice;
+export const {useCreateOrdersMutation}=ordersApiSlice;
