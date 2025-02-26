@@ -48,7 +48,7 @@ const ShippingPage = () => {
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId="postcode" className="my-2">
-          <Form.Label>PostCode</Form.Label>
+          <Form.Label>PostalCode</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter the postCode"
