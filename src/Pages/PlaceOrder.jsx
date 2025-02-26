@@ -138,6 +138,7 @@ const PlaceOrder = () => {
               >
                 Place Order
               </Button>
+              {isLoading && <Loader />}
             </ListGroup.Item>
           </ListGroup>
         </Col>
