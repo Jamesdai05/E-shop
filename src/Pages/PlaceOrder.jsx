@@ -33,11 +33,20 @@ const PlaceOrder = () => {
         <Col md={8}>
           <ListGroup variant="flush">
             <ListGroup.Item>
+              <h2>Shipping</h2>
+            </ListGroup.Item>
+            <ListGroup.Item>
               <p>
-                <strong>Address:</strong>
-                {cart.shippingAddress.address},{cart.shippingAddress.city},{cart.shippingAddress.postCode},{cart.shippingAddress.country}
+                <strong>Address:</strong><br/>
+                <i>
+                  {cart.shippingAddress.address},{cart.shippingAddress.city}
+                </i>
+                <br />
+                <i>
+                  {cart.shippingAddress.postalCode},
+                  {cart.shippingAddress.country}
+                </i>
               </p>
-
             </ListGroup.Item>
           </ListGroup>
         </Col>
