@@ -1,4 +1,4 @@
-import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
+import { Button,Col, Image, ListGroup, Row } from "react-bootstrap";
 import CheckoutComponent from "../components/CheckoutComponent.jsx";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -12,10 +12,11 @@ import { clearCartItems } from "../Slices/cartSlice.js";
 const PlaceOrder = () => {
 
   const navigate=useNavigate()
+  const dispatch=useDispatch();
 
   const cart=useSelector(state=>state.cart)
 
-  const [createOrder, {isLoading,error}]=useCreateOrdersMutation()
+  const [createOrders, {isLoading,error}]=useCreateOrdersMutation()
 
 
   // if one of this change,
@@ -27,8 +28,22 @@ const PlaceOrder = () => {
     }
   },[cart.paymentMethod,cart.shippingAddress.address,navigate])
 
-  const handleOrderSubmit=()=>{
-    console.log("submit")
+  const handleOrderSubmit=async()=>{
+    try {
+      const res=await createOrders({
+        orderItems:cart.cartItems,
+        shippingAddress:cart.shippingAddress,
+        paymentMethod:cart.paymentMethod,
+        itemsPrice:cart.itemsPrice,
+        taxPrice:cart.taxPrice,
+        shippingPrice:cart.shippingPrice,
+        totalPrice:cart.totalPrice,
+      }).unwrap()
+      dispatch(clearCartItems())
+      navigate(`/orders/${res._id}`)
+    } catch (error) {
+      toast.error(error)
+    }
   }
 
 
@@ -62,38 +77,38 @@ const PlaceOrder = () => {
               </p>
             </ListGroup.Item>
             <ListGroup.Item>
-                <strong>CartItems:</strong>
-                {cart.cartItems.length === 0 ? (
-                  <Message>Your cart is empty.</Message>
-                ) : (
-                  <ListGroup>
-                    {cart.cartItems.map((item, index) => (
-                      <ListGroup.Item key={index}>
-                        <Row>
-                          <Col md={1}>
-                            <Image
-                              src={item.image}
-                              alt={item.name}
-                              fluid
-                              rounded
-                            />
-                          </Col>
-                          <Col>
-                            <Link
-                              to={`/product/${item._id}`}
-                              className="text-decoration-none hover:text-decoration-underline"
-                            >
-                              {item.name}
-                            </Link>
-                          </Col>
-                          <Col md={4}>
-                            {item.qty}X${item.price}=${item.qty * item.price}
-                          </Col>
-                        </Row>
-                      </ListGroup.Item>
-                    ))}
-                  </ListGroup>
-                )}
+              <strong>CartItems:</strong>
+              {cart.cartItems.length === 0 ? (
+                <Message>Your cart is empty.</Message>
+              ) : (
+                <ListGroup>
+                  {cart.cartItems.map((item, index) => (
+                    <ListGroup.Item key={index}>
+                      <Row>
+                        <Col md={1}>
+                          <Image
+                            src={item.image}
+                            alt={item.name}
+                            fluid
+                            rounded
+                          />
+                        </Col>
+                        <Col>
+                          <Link
+                            to={`/product/${item._id}`}
+                            className="text-decoration-none hover:text-decoration-underline"
+                          >
+                            {item.name}
+                          </Link>
+                        </Col>
+                        <Col md={4}>
+                          {item.qty}X${item.price}=${item.qty * item.price}
+                        </Col>
+                      </Row>
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              )}
             </ListGroup.Item>
           </ListGroup>
         </Col>
@@ -127,7 +142,11 @@ const PlaceOrder = () => {
               </Row>
             </ListGroup.Item>
             <ListGroup.Item>
-              {error && <Message variant="danger">{error}</Message>}
+              {error && (
+                <Message variant="danger">
+                  {error?.data?.message || error?.error}
+                </Message>
+              )}
             </ListGroup.Item>
             <ListGroup.Item>
               <Button

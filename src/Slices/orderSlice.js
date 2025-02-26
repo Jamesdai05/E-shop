@@ -8,16 +8,14 @@ export const ordersApiSlice=apiSlice.injectEndpoints({
       query:()=>({
         url:ORDERS_URL,
       }),
-      keepUnusedDataFor:1,
       providesTags: ['Product'],
     }),
     createOrders: builder.mutation({
       query: (order) => ({
         url: ORDERS_URL,
         method:"POST",
-        body:{...order}
+        body:{...order},
       }),
-      keepUnusedDataFor: 1, // Cache data for 5 seconds
     })
   }),
 });
