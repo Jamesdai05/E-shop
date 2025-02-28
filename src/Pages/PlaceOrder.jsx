@@ -1,4 +1,4 @@
-import { Button,Col, Image, ListGroup, Row } from "react-bootstrap";
+import { Button,Col, Image, ListGroup, Row,Card} from "react-bootstrap";
 import CheckoutComponent from "../components/CheckoutComponent.jsx";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -113,53 +113,55 @@ const PlaceOrder = () => {
           </ListGroup>
         </Col>
         <Col md={4}>
-          <ListGroup variant="flush">
-            <ListGroup.Item>
-              <h2>Order Summary:</h2>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Row>
-                <Col>ItemsPrice:</Col>
-                <Col>${cart.itemsPrice}</Col>
-              </Row>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Row>
-                <Col>TaxPrice:</Col>
-                <Col>${cart.taxPrice}</Col>
-              </Row>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Row>
-                <Col>ShippingPrice:</Col>
-                <Col>${cart.shippingPrice}</Col>
-              </Row>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Row>
-                <Col>TotalPrice:</Col>
-                <Col>${cart.totalPrice}</Col>
-              </Row>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              {error && (
-                <Message variant="danger">
-                  {error?.data?.message || error?.error}
-                </Message>
-              )}
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Button
-                type="submit"
-                variant="primary"
-                disabled={cart.cartItems.length === 0}
-                onClick={handleOrderSubmit}
-              >
-                Place Order
-              </Button>
-              {isLoading && <Loader />}
-            </ListGroup.Item>
-          </ListGroup>
+          <Card>
+            <ListGroup variant="flush">
+              <ListGroup.Item>
+                <h2>Order Summary:</h2>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>ItemsPrice:</Col>
+                  <Col>${cart.itemsPrice}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>TaxPrice:</Col>
+                  <Col>${cart.taxPrice}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>ShippingPrice:</Col>
+                  <Col>${cart.shippingPrice}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>TotalPrice:</Col>
+                  <Col>${cart.totalPrice}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                {error && (
+                  <Message variant="danger">
+                    {error?.data?.message || error?.error}
+                  </Message>
+                )}
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Button
+                  type="submit"
+                  variant="primary"
+                  disabled={cart.cartItems.length === 0}
+                  onClick={handleOrderSubmit}
+                >
+                  Place Order
+                </Button>
+                {isLoading && <Loader />}
+              </ListGroup.Item>
+            </ListGroup>
+          </Card>
         </Col>
       </Row>
     </>
