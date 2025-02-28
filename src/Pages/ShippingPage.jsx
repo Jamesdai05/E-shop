@@ -35,7 +35,7 @@ const ShippingPage = () => {
             type="text"
             placeholder="Enter your address"
             value={address}
-            id="address"
+            name="address"
             autoComplete="address"
             onChange={(e) => setAddress(e.target.value)}
           ></Form.Control>
@@ -46,7 +46,7 @@ const ShippingPage = () => {
             type="text"
             placeholder="Enter the city"
             value={city}
-            id="city"
+            name="city"
             autoComplete="city"
             onChange={(e) => setCity(e.target.value)}
           ></Form.Control>
@@ -57,7 +57,7 @@ const ShippingPage = () => {
             type="text"
             placeholder="Enter the postalCode"
             value={postalCode}
-            id="postalCode"
+            name="postalCode"
             onChange={(e) => setPostalCode(e.target.value)}
           ></Form.Control>
           <Form.Label>Country</Form.Label>
@@ -65,7 +65,7 @@ const ShippingPage = () => {
             type="text"
             placeholder="Enter the country"
             value={country}
-            id="country"
+            name="country"
             autoComplete="country"
             onChange={(e) => setCountry(e.target.value)}
           ></Form.Control>
