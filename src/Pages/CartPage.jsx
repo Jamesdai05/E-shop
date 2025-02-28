@@ -53,6 +53,7 @@ const CartPage = () => {
                       onChange={(e) => {
                         addToCartHandler(item, Number(e.target.value));
                       }}
+                      id="qty"
                     >
                       {[...Array(item.countInStock).keys()].map((e) => (
                         <option key={e + 1} value={e + 1}>

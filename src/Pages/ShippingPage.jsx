@@ -26,7 +26,7 @@ const ShippingPage = () => {
 
   return (
     <FormContainer>
-      <CheckoutComponent step1 step2/>
+      <CheckoutComponent step1 step2 />
       <h1>Shipping Info</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="address" className="my-2">
@@ -35,6 +35,8 @@ const ShippingPage = () => {
             type="text"
             placeholder="Enter your address"
             value={address}
+            id="address"
+            autoComplete="address"
             onChange={(e) => setAddress(e.target.value)}
           ></Form.Control>
         </Form.Group>
@@ -44,6 +46,8 @@ const ShippingPage = () => {
             type="text"
             placeholder="Enter the city"
             value={city}
+            id="city"
+            autoComplete="city"
             onChange={(e) => setCity(e.target.value)}
           ></Form.Control>
         </Form.Group>
@@ -51,8 +55,9 @@ const ShippingPage = () => {
           <Form.Label>PostalCode</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter the postCode"
+            placeholder="Enter the postalCode"
             value={postalCode}
+            id="postalCode"
             onChange={(e) => setPostalCode(e.target.value)}
           ></Form.Control>
           <Form.Label>Country</Form.Label>
@@ -60,6 +65,8 @@ const ShippingPage = () => {
             type="text"
             placeholder="Enter the country"
             value={country}
+            id="country"
+            autoComplete="country"
             onChange={(e) => setCountry(e.target.value)}
           ></Form.Control>
         </Form.Group>
