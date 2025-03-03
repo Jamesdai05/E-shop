@@ -8,14 +8,14 @@ export const productsApiSlice=apiSlice.injectEndpoints({
       query:()=>({
         url:PRODUCTS_URL,
       }),
-      keepUnusedDataFor:1,
+      // keepUnusedDataFor:1,
       providesTags: ['Product'],
     }),
     getProductDetails: builder.query({
       query: (productId) => ({
         url: `${PRODUCTS_URL}/${productId}`,
       }),
-      keepUnusedDataFor: 1, // Cache data for 5 seconds
+      // keepUnusedDataFor: 1, // Cache data for 5 seconds
     })
   }),
 });
