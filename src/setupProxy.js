@@ -6,7 +6,7 @@ module.exports = function(app) {
     createProxyMiddleware({
       target: 'http://localhost:5000', // Your backend URL
       changeOrigin: true,
-      // cookieDomainRewrite: 'localhost', // or your frontend domain in production
+      cookieDomainRewrite: 'localhost', // or your frontend domain in production
     })
   );
 };
